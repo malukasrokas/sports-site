@@ -3,6 +3,12 @@
         <title>News feed</title>
     </head>
     <body>
-
+        {% for post in posts %}
+        <div>
+            <h1><a href="">{{ post.title }}</a></h1>
+            <p><i>Published: {{ post.created_date }}</i></p>
+            <p>{{ post.text|linebreaksbr }}</p>
+        </div>
+        {% endfor %}
     </body>
 </html>

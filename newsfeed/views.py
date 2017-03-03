@@ -1,4 +1,7 @@
 from django.shortcuts import render
+from django.utils import timezone
+from .models import Post
 
 def post_list(request):
-    return render(request, 'newsfeed/post_list.html', {})
+    posts = Post.objects.order_by('created_date')
+    return render(request, 'newsfeed/post_list.html', {'posts': posts})
