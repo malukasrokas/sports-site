@@ -4,7 +4,7 @@
     </head>
     <body>
         {% for post in posts %}
-        <div>
+        <div class>
             <h1><a href="">{{ post.title }}</a></h1>
             <p><i>Published: {{ post.created_date }}</i></p>
             <p>{{ post.text|linebreaksbr }}</p>
