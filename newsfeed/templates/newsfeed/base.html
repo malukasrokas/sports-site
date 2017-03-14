@@ -5,6 +5,9 @@
     </head>
     <body>
         <div>
+            <form action="{% url 'post_list' %}">
+                <input type="submit" value="Home Page" />
+            </form>
             <form action="{% url 'post_new' %}">
                 <input type="submit" value="New post" />
             </form>

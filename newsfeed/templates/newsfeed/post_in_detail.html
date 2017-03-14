@@ -2,6 +2,11 @@
 
 {% block content %}
     <div>
+        <form action="{% url 'post_edit' pk=post.pk %}">
+            <input type="submit" value="Edit this post" />
+        </form>
+    </div>
+    <div>
         {% if post.created_date %}
             <div>
                 {{ post.created_date }}

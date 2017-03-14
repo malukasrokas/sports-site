@@ -8,11 +8,11 @@ Develop sports website built in django framework.
 [Full documentation](https://github.com/malukasrokas/sports-site/blob/master/docs/documentation.pdf)
 
 #Iterations:
-###1. First Iteration:
-* Create post(for superuser) *(in progress)*;
-* Edit post(for superuser) *(in progress)*;
+###1. First Iteration *(March 15)*:
+* Create post(for superuser) *(Completed)*;
+* Edit post(for superuser) *(Completed)*;
 * Delete post(for superuser) *(in progress)*;
-* Read posts list *(in progress)*;
+* Read posts list *(Completed)*;
 * Read post in detail *(Completed)*
 
 ###2. Second Iteration *(March 28)*:
