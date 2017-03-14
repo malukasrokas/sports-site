@@ -12,30 +12,26 @@ Current documentation
 
 Iterations:
 =================
-#1. First Iteration *(March 15)*:
-=================
+### 1. First Iteration *(March 15)*:
 * Create post(for superuser) *(Completed)*;
 * Edit post(for superuser) *(Completed)*;
 * Delete post(for superuser) *(Completed)*;
 * Read posts list *(Completed)*;
 * Read post in detail *(Completed)*;
 
-#2. Second Iteration *(March 28)*: 
-=================
+### 2. Second Iteration *(March 28)*: 
 * Manage user privileges;
 * Create forum post;
 * Edit forum post;
 * Delete forum post;
 
-#3. Third Iteration *(April 19)*:
-=================
+### 3. Third Iteration *(April 19)*:
 * Comment in forum and news feed;
 * Delete comment;
 * Submit match details (for superuser);
 * Submit player details (for superuser);
 
-#4. Fourth Iteration *(May 3)*:
-=================
+# 4. Fourth Iteration *(May 3)*:
 * Submit score (for superuser);
 * Sort out news by team;
 * Chat (read, send);
