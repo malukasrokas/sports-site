@@ -13,7 +13,7 @@ Develop sports website built in django framework.
 * Edit post(for superuser) *(in progress)*;
 * Delete post(for superuser) *(in progress)*;
 * Read posts list *(in progress)*;
-* Read post in detail *(in progress)*
+* Read post in detail *(Completed)*
 
 ###2. Second Iteration *(March 28)*:
 * Manage user privileges;
