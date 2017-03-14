@@ -11,7 +11,7 @@ Develop sports website built in django framework.
 ###1. First Iteration *(March 15)*:
 * Create post(for superuser) *(Completed)*;
 * Edit post(for superuser) *(Completed)*;
-* Delete post(for superuser) *(in progress)*;
+* Delete post(for superuser) *(Completed)*;
 * Read posts list *(Completed)*;
 * Read post in detail *(Completed)*
 

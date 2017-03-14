@@ -2,9 +2,14 @@
 
 {% block content %}
     <div>
-        <form action="{% url 'post_edit' pk=post.pk %}">
-            <input type="submit" value="Edit this post" />
-        </form>
+        {% if user.is_superuser %}
+            <form action="{% url 'post_edit' pk=post.pk %}">
+                <input type="submit" value="Edit this post" />
+            </form>
+            <form action="{% url 'post_remove' pk=post.pk %}">
+                <input type="submit" value="Remove this post" />
+            </form>
+        {% endif %}
     </div>
     <div>
         {% if post.created_date %}

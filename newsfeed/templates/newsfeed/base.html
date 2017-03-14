@@ -8,9 +8,11 @@
             <form action="{% url 'post_list' %}">
                 <input type="submit" value="Home Page" />
             </form>
-            <form action="{% url 'post_new' %}">
-                <input type="submit" value="New post" />
-            </form>
+            {% if user.is_superusers %}
+                <form action="{% url 'post_new' %}">
+                    <input type="submit" value="New post" />
+                </form>
+            {% endif %}
         </div>
         <div class="content">
             {% block content %}
