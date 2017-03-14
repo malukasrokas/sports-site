@@ -31,7 +31,7 @@ Iterations:
 * Submit match details (for superuser);
 * Submit player details (for superuser);
 
-# 4. Fourth Iteration *(May 3)*:
+### 4. Fourth Iteration *(May 3)*:
 * Submit score (for superuser);
 * Sort out news by team;
 * Chat (read, send);
