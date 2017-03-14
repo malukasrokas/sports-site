@@ -4,6 +4,11 @@
         <title>New's feed</title>
     </head>
     <body>
+        <div>
+            <form action="{% url 'post_new' %}">
+                <input type="submit" value="New post" />
+            </form>
+        </div>
         <div class="content">
             {% block content %}
             {% endblock %}
