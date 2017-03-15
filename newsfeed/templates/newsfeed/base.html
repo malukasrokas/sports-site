@@ -8,7 +8,7 @@
             <form action="{% url 'post_list' %}">
                 <input type="submit" value="Home Page" />
             </form>
-            {% if user.is_superusers %}
+            {% if user.is_superuser %}
                 <form action="{% url 'post_new' %}">
                     <input type="submit" value="New post" />
                 </form>
