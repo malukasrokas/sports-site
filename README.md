@@ -19,7 +19,7 @@ Iterations:
 * Read posts list *(Completed)*;
 * Read post in detail *(Completed)*;
 
-### 2. Second Iteration *(March 28)*: 
+### 2. Second Iteration *(April 5)*: 
 * Manage user privileges;
 * Create forum post;
 * Edit forum post;
