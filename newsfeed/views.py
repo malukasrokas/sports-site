@@ -1,10 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
-from .models import Post
+from .models import Post, ForumPost
 from .forms import PostForm
 
 def post_list(request):
-    posts = Post.objects.order_by('created_date')
+    posts = Post.objects.order_by('-created_date')
     return render(request, 'newsfeed/post_list.html', {'posts': posts})
 
 def post_in_detail(request, pk):
@@ -42,3 +42,7 @@ def post_remove(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.delete()
     return redirect('post_list')
+
+def forum_list(request):
+    forumPosts = ForumPost.objects.order_by('-timeStamp')
+    return render(request, 'forum/forum_list.html', {'forumPosts': forumPosts})

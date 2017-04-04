@@ -1,0 +1,9 @@
+<div>
+    <h1><a href="/">Forum</a></h1>
+</div>
+
+{% for forumPost in forumPosts %}
+    <p>Date: {{ forumPost.timeStamp }}
+    <h2><a href="">{{ forumPost.title }}</a><i> by {{ forumPost.author }}</i></h2>
+    <p>{{ forumPost.post|linebreaksbr }}</p>
+{% endfor %}
