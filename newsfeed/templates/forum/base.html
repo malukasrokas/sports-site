@@ -1,0 +1,13 @@
+{% include "header.html" %}
+<div>
+    <h1><a href="{% url 'forum_list' %}">Forum</a></h1>
+</div>
+
+{% if user.is_superuser %}
+    <form action="{% url 'new_forumpost' %}">
+        <input type="submit" value="New post" />
+    </form>
+{% endif %}
+
+{% block content %}
+{% endblock %}

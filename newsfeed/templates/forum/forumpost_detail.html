@@ -1,0 +1,16 @@
+{% extends 'forum/base.html' %}
+
+{% block content %}
+    {% if user.is_superuser %}
+        <form action="{% url 'edit_forumpost' pk=forumpost.pk %}">
+            <input type="submit" value="Edit this post" />
+        </form>
+    {% endif %}
+
+    <div class="forumpost">
+        <p><i>Created: {{ forumpost.timeStamp }}</p></i>
+        <h2>Author: {{ forumpost.author }} </h2>
+        <h1>{{ forumpost.title }}</h1>
+        <p> {{ forumpost.post }}</p>
+    </div>
+{% endblock %}

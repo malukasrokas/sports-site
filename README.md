@@ -21,8 +21,8 @@ Iterations:
 
 ### 2. Second Iteration *(April 5)*:
 * Ability to publish post(for superuser); *(In progress)*
-* Create forum post; *(In progress)*
-* Edit forum post; *(In progress)*
+* Create forum post; *(Completed)*
+* Edit forum post; *(Completed)*
 * Delete forum post; *(In progress)*
 
 ### 3. Third Iteration *(April 19)*:

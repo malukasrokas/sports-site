@@ -1,9 +1,10 @@
-<div>
-    <h1><a href="/">Forum</a></h1>
-</div>
+{% extends 'forum/base.html' %}
+{% block content %}
 
-{% for forumPost in forumPosts %}
-    <p>Date: {{ forumPost.timeStamp }}
-    <h2><a href="">{{ forumPost.title }}</a><i> by {{ forumPost.author }}</i></h2>
-    <p>{{ forumPost.post|linebreaksbr }}</p>
-{% endfor %}
+    {% for forumPost in forumPosts %}
+        <p>{{ forumPost.timeStamp }}
+        <h2><a href="{% url 'forumpost_detail' pk=forumPost.pk %}">{{ forumPost.title }}</a><i> by {{ forumPost.author }}</i></h2>
+        <p>{{ forumPost.post|truncatechars:80|linebreaksbr }}</p>
+    {% endfor %}
+
+{% endblock %}
