@@ -4,7 +4,7 @@
     {% for forumPost in forumPosts %}
         <p>{{ forumPost.timeStamp }}
         <h2><a href="{% url 'forumpost_detail' pk=forumPost.pk %}">{{ forumPost.title }}</a><i> by {{ forumPost.author }}</i></h2>
-        <p>{{ forumPost.post|truncatechars:80|linebreaksbr }}</p>
+        <p>{{ forumPost.post|truncatechars:100|linebreaksbr }}</p>
     {% endfor %}
 
 {% endblock %}

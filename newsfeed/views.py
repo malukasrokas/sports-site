@@ -4,7 +4,7 @@ from .models import Post, ForumPost
 from .forms import PostForm, ForumPostForm
 
 def post_list(request):
-    posts = Post.objects.order_by('-created_date')
+    posts = Post.objects.order_by('-created_date')[0:3]
     return render(request, 'newsfeed/post_list.html', {'posts': posts})
 
 def post_in_detail(request, pk):

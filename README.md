@@ -23,7 +23,7 @@ Iterations:
 * Create forum post; *(Completed)*
 * Edit forum post; *(Completed)*
 * Delete forum post; *(Completed)*
-* Display forum post list and post in detail; *(Completed)
+* Display forum post list and post in detail; *(Completed)*
 
 ### 3. Third Iteration *(April 19)*:
 * Comment in forum and news feed;

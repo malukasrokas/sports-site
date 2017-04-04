@@ -7,8 +7,18 @@
         </form>
 
         <form action="{% url 'remove_forumpost' pk=forumpost.pk %}">
-            <input type="submit" value="Remove this post" />
+            <input type="submit" onclick="myFunction()" value="Remove this post" />
         </form>
+
+        <script>
+        function myFunction() {
+             var r = confirm("Are you sure?");
+             if (r == true) {
+                return true;
+             } else
+                 return false;
+        }
+        </script>
 
     {% endif %}
 
@@ -19,3 +29,11 @@
         <p> {{ forumpost.post }}</p>
     </div>
 {% endblock %}
+
+<script>
+function clicked()
+{
+    //if(!confirm('Are you sure?'))e.preventDefault();
+    confirm("Are you sure?");
+}
+</script>
