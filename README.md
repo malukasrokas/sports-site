@@ -19,11 +19,11 @@ Iterations:
 * Read posts list *(Completed)*;
 * Read post in detail *(Completed)*;
 
-### 2. Second Iteration *(April 5)*: 
-* Manage user privileges;
-* Create forum post;
-* Edit forum post;
-* Delete forum post;
+### 2. Second Iteration *(April 5)*:
+* Ability to publish post(for superuser); *(In progress)*
+* Create forum post; *(In progress)*
+* Edit forum post; *(In progress)*
+* Delete forum post; *(In progress)*
 
 ### 3. Third Iteration *(April 19)*:
 * Comment in forum and news feed;
