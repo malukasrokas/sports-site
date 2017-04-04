@@ -4,11 +4,8 @@
     <head>
         <title>New's feed</title>
     </head>
-    <body>
+    <body><br>
         <div>
-            <form action="{% url 'post_list' %}">
-                <input type="submit" value="Home Page" />
-            </form>
             {% if user.is_superuser %}
                 <form action="{% url 'post_new' %}">
                     <input type="submit" value="New post" />

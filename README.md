@@ -23,7 +23,7 @@ Iterations:
 * Ability to publish post(for superuser); *(In progress)*
 * Create forum post; *(Completed)*
 * Edit forum post; *(Completed)*
-* Delete forum post; *(In progress)*
+* Delete forum post; *(Completed)*
 
 ### 3. Third Iteration *(April 19)*:
 * Comment in forum and news feed;

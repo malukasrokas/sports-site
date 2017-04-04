@@ -5,6 +5,11 @@
         <form action="{% url 'edit_forumpost' pk=forumpost.pk %}">
             <input type="submit" value="Edit this post" />
         </form>
+
+        <form action="{% url 'remove_forumpost' pk=forumpost.pk %}">
+            <input type="submit" value="Remove this post" />
+        </form>
+
     {% endif %}
 
     <div class="forumpost">

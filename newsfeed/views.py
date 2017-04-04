@@ -77,3 +77,8 @@ def edit_forumpost(request, pk):
     else:
         form = ForumPostForm(instance=forumpost)
     return render(request, 'forum/edit_forumpost.html', {'form': form})
+
+def remove_forumpost(request, pk):
+    forumpost = get_object_or_404(ForumPost, pk=pk)
+    forumpost.delete()
+    return redirect('forum_list')

@@ -11,4 +11,5 @@ urlpatterns = [
     url(r'^forumpost/(?P<pk>\d+)/$', views.forumpost_detail, name='forumpost_detail'),
     url(r'^forumpost/new/$', views.new_forumpost, name='new_forumpost'),
     url(r'^forumpost/edit/(?P<pk>\d+)/$', views.edit_forumpost, name='edit_forumpost'),
+    url(r'^forumpost/(?P<pk>\d+)/remove/$', views.remove_forumpost, name='remove_forumpost'),
 ]
