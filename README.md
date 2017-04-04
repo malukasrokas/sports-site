@@ -20,10 +20,10 @@ Iterations:
 * Read post in detail *(Completed)*;
 
 ### 2. Second Iteration *(April 5)*:
-* Ability to publish post(for superuser); *(In progress)*
 * Create forum post; *(Completed)*
 * Edit forum post; *(Completed)*
 * Delete forum post; *(Completed)*
+* Display forum post list and post in detail; *(Completed)
 
 ### 3. Third Iteration *(April 19)*:
 * Comment in forum and news feed;
