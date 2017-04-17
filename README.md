@@ -26,8 +26,8 @@ Iterations:
 * Display forum post list and post in detail; *(Completed)*
 
 ### 3. Third Iteration *(April 19)*:
-* Comment in forum and news feed; *(In progress)*
-* Delete comment; *(In progress)*
+* Comment in forum and news feed; *(Completed)*
+* Delete comment; *(Completed)*
 * Submit match details (for superuser); *(In progress)*
 * Submit player details (for superuser); *(In progress)*
 
