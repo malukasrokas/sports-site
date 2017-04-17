@@ -31,4 +31,16 @@
         <h1>{{ post.title }}</h1>
         <p>{{ post.text|linebreaksbr }}</p>
     </div>
+    <hr>
+    <a href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
+    {% for comment in post.comment.all %}
+        <div>
+            {{ comment.created_date }}
+            <strong>{{ comment.author }}</script>
+            <p>{{ comment.text|linebreaks }}
+        </div>
+    {% empty %}
+        <p> No comments yet... </p>
+    {% endfor %}
+
 {% endblock %}

@@ -1,10 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
+from django.core.paginator import Paginator
 from .models import Post, ForumPost
-from .forms import PostForm, ForumPostForm
+from .forms import PostForm, ForumPostForm, CommentForm
 
 def post_list(request):
-    posts = Post.objects.order_by('-created_date')[0:3]
+    posts = Post.objects.order_by('-created_date')
     return render(request, 'newsfeed/post_list.html', {'posts': posts})
 
 def post_in_detail(request, pk):
@@ -82,3 +83,17 @@ def remove_forumpost(request, pk):
     forumpost = get_object_or_404(ForumPost, pk=pk)
     forumpost.delete()
     return redirect('forum_list')
+
+def add_comment_to_post(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.author = request.user
+            comment.post = post
+            comment.save()
+            return redirect('post_in_detail', pk=post.pk)
+    else:
+        form = CommentForm()
+    return render(request, 'newsfeed/add_comment_to_post.html', {'form': form})
