@@ -32,8 +32,8 @@ class Chat(models.Model):
 
 class Comment(models.Model):
     author = models.ForeignKey('auth.User')
-    newsPost = models.ForeignKey(Post, blank=True, null=True, related_name="newsComment")
-    forumPost = models.ForeignKey(ForumPost, blank=True, null=True)
+    newsPost = models.ForeignKey(Post, blank=True, null=True, related_name="news_comments")
+    forumPost = models.ForeignKey(ForumPost, blank=True, null=True, related_name="forum_comments")
     text = models.TextField()
     timeStamp = models.DateTimeField(default=timezone.now)
 

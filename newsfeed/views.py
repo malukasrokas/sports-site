@@ -101,8 +101,30 @@ def add_comment_to_post(request, pk):
     return render(request, 'newsfeed/add_comment_to_post.html', {'form': form})
 
 @login_required
-def remove_comment(request, pk):
+def remove_news_comment(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
     newsPost_pk = comment.newsPost.pk
     comment.delete()
     return redirect('post_in_detail', pk=newsPost_pk)
+
+@login_required
+def add_comment_to_forumpost(request, pk):
+    forumPost = get_object_or_404(ForumPost, pk=pk)
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.author = request.user
+            comment.forumPost = forumPost
+            comment.save()
+            return redirect('forumpost_detail', pk=forumPost.pk)
+    else:
+        form = CommentForm()
+    return render(request, 'forum/add_comment_to_forumpost.html', {'form': form})
+
+@login_required
+def remove_forum_comment(request, pk):
+    comment = get_object_or_404(Comment, pk=pk)
+    forumpost_pk = comment.forumPost.pk
+    comment.delete()
+    return redirect('forumpost_detail', pk=forumpost_pk)

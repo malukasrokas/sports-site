@@ -5,6 +5,7 @@
         <p>{{ forumPost.timeStamp }}
         <h2><a href="{% url 'forumpost_detail' pk=forumPost.pk %}">{{ forumPost.title }}</a><i> by {{ forumPost.author }}</i></h2>
         <p>{{ forumPost.post|truncatechars:100|linebreaksbr }}</p>
+        <a href="{% url 'forumpost_detail' pk=forumPost.pk %}">{{ forumPost.forum_comments.count }} responses</a>
     {% endfor %}
 
 {% endblock %}

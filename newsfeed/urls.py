@@ -13,5 +13,7 @@ urlpatterns = [
     url(r'^forumpost/edit/(?P<pk>\d+)/$', views.edit_forumpost, name='edit_forumpost'),
     url(r'^forumpost/(?P<pk>\d+)/remove/$', views.remove_forumpost, name='remove_forumpost'),
     url(r'^post/(?P<pk>\d+)/comment/$', views.add_comment_to_post, name='add_comment_to_post'),
-    url(r'^comment/(?P<pk>\d+)/remove/$', views.remove_comment, name='remove_comment'),
+    url(r'^comment/(?P<pk>\d+)/remove/$', views.remove_news_comment, name='remove_news_comment'),
+    url(r'^forumpost/(?P<pk>\d+)/comment/$', views.add_comment_to_forumpost, name='add_comment_to_forumpost'),
+    url(r'^forumpost/(?P<pk>\d+)/comment/remove/$', views.remove_forum_comment, name='remove_forum_comment'),
 ]

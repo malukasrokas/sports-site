@@ -33,13 +33,16 @@
     </div>
     <hr>
     {% if user.is_authenticated %}
-      <a href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
+        <form action="{% url 'add_comment_to_post' pk=post.pk %}">
+            <input type="submit" value="Add comment" />
+        </form>
     {% endif %}
-    {% for comment in post.newsComment.all %}
+    <strong><p>Comments:</p></strong>
+    {% for comment in post.news_comments.all %}
         <div>
             <strong>{{ comment.author }} says:</strong>
             {% if user.is_superuser %}
-                <a href="{% url 'remove_comment' pk=comment.pk %}">Remove</a>
+                <a href="{% url 'remove_news_comment' pk=comment.pk %}">Remove</a>
             {% endif %}
             <p>{{ comment.text|linebreaks }}
         </div>
