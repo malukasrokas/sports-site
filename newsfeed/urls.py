@@ -13,4 +13,5 @@ urlpatterns = [
     url(r'^forumpost/edit/(?P<pk>\d+)/$', views.edit_forumpost, name='edit_forumpost'),
     url(r'^forumpost/(?P<pk>\d+)/remove/$', views.remove_forumpost, name='remove_forumpost'),
     url(r'^post/(?P<pk>\d+)/comment/$', views.add_comment_to_post, name='add_comment_to_post'),
+    url(r'^comment/(?P<pk>\d+)/remove/$', views.remove_comment, name='remove_comment'),
 ]

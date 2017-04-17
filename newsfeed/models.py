@@ -32,13 +32,13 @@ class Chat(models.Model):
 
 class Comment(models.Model):
     author = models.ForeignKey('auth.User')
-    news = models.ForeignKey(Post, null=True)
-    forumPost = models.ForeignKey(ForumPost, null=True)
+    newsPost = models.ForeignKey(Post, blank=True, null=True, related_name="newsComment")
+    forumPost = models.ForeignKey(ForumPost, blank=True, null=True)
     text = models.TextField()
     timeStamp = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return self.author
+        return self.text
 
 class Team(models.Model):
     name = models.CharField(max_length=50)

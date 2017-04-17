@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.core.paginator import Paginator
-from .models import Post, ForumPost
+from django.contrib.auth.decorators import login_required
+from .models import Post, ForumPost, Comment
 from .forms import PostForm, ForumPostForm, CommentForm
 
 def post_list(request):
@@ -84,16 +85,24 @@ def remove_forumpost(request, pk):
     forumpost.delete()
     return redirect('forum_list')
 
+@login_required
 def add_comment_to_post(request, pk):
-    post = get_object_or_404(Post, pk=pk)
+    newsPost = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
             comment.author = request.user
-            comment.post = post
+            comment.newsPost = newsPost
             comment.save()
-            return redirect('post_in_detail', pk=post.pk)
+            return redirect('post_in_detail', pk=newsPost.pk)
     else:
         form = CommentForm()
     return render(request, 'newsfeed/add_comment_to_post.html', {'form': form})
+
+@login_required
+def remove_comment(request, pk):
+    comment = get_object_or_404(Comment, pk=pk)
+    newsPost_pk = comment.newsPost.pk
+    comment.delete()
+    return redirect('post_in_detail', pk=newsPost_pk)
