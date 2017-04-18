@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Post, ForumPost, Comment
+from .models import Post, ForumPost, Comment, Team, Player
 
 class PostForm(forms.ModelForm):
 
@@ -19,3 +19,15 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ('text',)
+
+class TeamForm(forms.ModelForm):
+
+    class Meta:
+        model = Team
+        fields = ('name', 'homeArena',)
+
+class PlayerForm(forms.ModelForm):
+
+    class Meta:
+        model = Player
+        fields = ('name', 'height', 'bDay', 'team',)

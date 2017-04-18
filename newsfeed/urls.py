@@ -16,4 +16,8 @@ urlpatterns = [
     url(r'^comment/(?P<pk>\d+)/remove/$', views.remove_news_comment, name='remove_news_comment'),
     url(r'^forumpost/(?P<pk>\d+)/comment/$', views.add_comment_to_forumpost, name='add_comment_to_forumpost'),
     url(r'^forumpost/(?P<pk>\d+)/comment/remove/$', views.remove_forum_comment, name='remove_forum_comment'),
+    url(r'^teams/$', views.teams, name='teams'),
+    url(r'^teams/new/$', views.add_team, name='add_team'),
+    url(r'^teams/summary/(?P<pk>\d+)/$', views.team_summary, name="team_summary"),
+    url(r'^teams/players/$', views.add_player, name='add_player'),
 ]

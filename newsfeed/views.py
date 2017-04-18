@@ -2,8 +2,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
-from .models import Post, ForumPost, Comment
-from .forms import PostForm, ForumPostForm, CommentForm
+from .models import Post, ForumPost, Comment, Team
+from .forms import PostForm, ForumPostForm, CommentForm, TeamForm, PlayerForm
 
 def post_list(request):
     posts = Post.objects.order_by('-created_date')
@@ -128,3 +128,36 @@ def remove_forum_comment(request, pk):
     forumpost_pk = comment.forumPost.pk
     comment.delete()
     return redirect('forumpost_detail', pk=forumpost_pk)
+
+@login_required
+def teams(request):
+    teams = Team.objects.order_by('-name')
+    return render(request, 'teams/all_teams.html', {'teams': teams})
+
+@login_required
+def add_team(request):
+    form = TeamForm()
+    if request.method == "POST":
+        form = TeamForm(request.POST)
+        if form.is_valid():
+            team = form.save(commit=False)
+            team.save()
+            return render(request, 'teams/all_teams.html', {'form': form})
+
+    return render(request, 'teams/add_team.html', {'form': form})
+
+def team_summary(request, pk):
+    team = get_object_or_404(Team, pk=pk)
+    return render(request, 'teams/team_summary.html', {'team': team})
+
+@login_required
+def add_player(request):
+    form = PlayerForm()
+    if request.method == "POST":
+        form = PlayerForm(request.POST)
+        if form.is_valid():
+            player = form.save(commit=False)
+            player.save()
+            return render(request, 'teams/all_teams.html', {'form': form})
+
+    return render(request, 'teams/add_player.html', {'form': form})

@@ -1,0 +1,14 @@
+{% extends 'teams/base.html' %}
+
+{% block content %}
+    {% if user.is_superuser %}
+        <form action="{% url 'add_team' %}">
+            <input type="submit" value="Add team" />
+        </form>
+    {% endif %}
+    {% for team in teams %}
+        <div>
+            <p><a href="{% url 'team_summary' pk=team.pk %}"> {{ team.name|linebreaksbr }} </a></p>
+        </div>
+    {% endfor %}
+{% endblock %}
