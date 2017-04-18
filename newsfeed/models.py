@@ -1,3 +1,4 @@
+from django.core.validators import MinValueValidator
 from django.db import models
 from django.utils import timezone
 
@@ -49,24 +50,23 @@ class Team(models.Model):
 
 class Player(models.Model):
     name = models.CharField(max_length=50)
-    height = models.IntegerField()
+    height = models.IntegerField(validators=[MinValueValidator(0)])
     bDay = models.DateTimeField()
-    team = models.ForeignKey(Team, related_name="players")
+    team = models.ForeignKey(Team, related_name="players", blank=True, null=True)
 
     def __str__(self):
         return self.name
 
 class Stats(models.Model):
     player = models.ForeignKey(Player)
-    score = models.IntegerField()
+    score = models.IntegerField(validators=[MinValueValidator(0)])
 
     def __str__(self):
         return self.player
 
 class Match(models.Model):
     homeTeam = models.ForeignKey(Team, related_name='homeTeam')
+    homeTeamScore = models.IntegerField(default=0, validators=[MinValueValidator(0)])
     awayTeam = models.ForeignKey(Team, related_name='awayTeam')
+    awayTeamScore = models.IntegerField(default=0, validators=[MinValueValidator(0)])
     date = models.DateTimeField()
-
-    def __str__(self):
-        return self.homeTeam, self.awayTeam

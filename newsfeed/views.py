@@ -2,8 +2,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
-from .models import Post, ForumPost, Comment, Team, Player
-from .forms import PostForm, ForumPostForm, CommentForm, TeamForm, PlayerForm
+from .models import Post, ForumPost, Comment, Team, Player, Match
+from .forms import PostForm, ForumPostForm, CommentForm, TeamForm, PlayerForm, MatchForm
 
 def post_list(request):
     posts = Post.objects.order_by('-created_date')
@@ -129,7 +129,6 @@ def remove_forum_comment(request, pk):
     comment.delete()
     return redirect('forumpost_detail', pk=forumpost_pk)
 
-@login_required
 def teams(request):
     teams = Team.objects.order_by('-name')
     return render(request, 'teams/all_teams.html', {'teams': teams})
@@ -176,7 +175,39 @@ def edit_player(request, pk):
         form = PlayerForm(instance=player)
     return render(request, 'teams/add_player.html', {'form': form})
 
-
 def player_summary(request, pk):
     player = get_object_or_404(Player, pk=pk)
     return render(request, 'teams/player_summary.html', {'player': player})
+
+def matches(request):
+    matches = Match.objects.order_by('-date')
+    return render(request, 'matches/matches_list.html', {'matches': matches})
+
+@login_required
+def add_match(request):
+    form = MatchForm()
+    if request.method == "POST":
+        form = MatchForm(request.POST)
+        if form.is_valid():
+            match = form.save(commit=False)
+            match.save()
+            return render(request, 'matches/matches_list.html', {'form': form})
+
+    return render(request, 'matches/matches_list.html', {'form': form})
+
+def match_summary(request, pk):
+    match = get_object_or_404(Match, pk=pk)
+    return render(request, 'matches/match_summary.html', {'match': match})
+
+@login_required
+def edit_match_summary(request, pk):
+    match = get_object_or_404(Match, pk=pk)
+    if request.method == "POST":
+        form = MatchForm(request.POST, instance=match)
+        if form.is_valid():
+            match = form.save(commit=False)
+            match.save()
+            return redirect('match_summary', pk=match.pk)
+    else:
+        form = MatchForm(instance=match)
+    return render(request, 'matches/add_match.html', {'form': form})

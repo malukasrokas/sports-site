@@ -22,5 +22,9 @@ urlpatterns = [
     url(r'^teams/add_player/$', views.add_player, name='add_player'),
     url(r'^teams/edit_player/(?P<pk>\d+)/$', views.edit_player, name='edit_player'),
     url(r'^teams/player/summary/(?P<pk>\d+)/$', views.player_summary, name="player_summary"),
+    url(r'^matches/$', views.matches, name='matches'),
+    url(r'^matches/add_match/$', views.add_match, name='add_match'),
+    url(r'^match/summary/(?P<pk>\d+)/$', views.match_summary, name="match_summary"),
+    url(r'^match/summary/edit/(?P<pk>\d+)/$', views.edit_match_summary, name='edit_match_summary'),
 
 ]

@@ -1,0 +1,18 @@
+{% extends 'matches/base.html' %}
+
+{% block content %}
+    {% if user.is_superuser %}
+        <form action="{% url 'add_match' %}">
+            <input type="submit" value="Add match" />
+        </form>
+    {% endif %}
+    <br>
+
+    {% for match in matches %}
+        <i> {{ match.date|date:"M d, Y" }} </i><br>
+        <b>{{ match.awayTeam }} </b> ({{ match.awayTeamScore }}) @
+        <b>{{ match.homeTeam }}</b> ({{ match.homeTeamScore }}) in
+        {{ match.homeTeam.homeArena }}
+        <a href="{% url 'match_summary' pk=match.pk %}">Summary</a><br>
+    {% endfor %}
+{% endblock %}
