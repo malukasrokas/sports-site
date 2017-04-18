@@ -30,4 +30,4 @@ class PlayerForm(forms.ModelForm):
 
     class Meta:
         model = Player
-        fields = ('name', 'height', 'bDay', 'team',)
+        fields = ('name', 'height', 'bDay',)

@@ -51,7 +51,7 @@ class Player(models.Model):
     name = models.CharField(max_length=50)
     height = models.IntegerField()
     bDay = models.DateTimeField()
-    team = models.ForeignKey(Team)
+    team = models.ForeignKey(Team, related_name="players")
 
     def __str__(self):
         return self.name
