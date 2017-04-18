@@ -2,4 +2,17 @@
 
 {% block content %}
     <a href="{% url 'add_player' %}">Add Player</a>
+    <br>
+    {% for player in team_players %}
+    <div>
+        <span>
+            <a href="{% url 'player_summary' pk=player.pk %}">{{ player.name }}</a>
+            {{ player.height }} cm.
+            {% if user.is_superuser %}
+                <a href="{% url 'edit_player' pk=player.pk %}"> (Edit) </a>
+            {% endif %}
+        </span>
+
+    </div>
+    {% endfor %}
 {% endblock %}

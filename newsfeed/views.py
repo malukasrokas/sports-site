@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
-from .models import Post, ForumPost, Comment, Team
+from .models import Post, ForumPost, Comment, Team, Player
 from .forms import PostForm, ForumPostForm, CommentForm, TeamForm, PlayerForm
 
 def post_list(request):
@@ -148,7 +148,8 @@ def add_team(request):
 
 def team_summary(request, pk):
     team = get_object_or_404(Team, pk=pk)
-    return render(request, 'teams/team_summary.html', {'team': team})
+    team_players = Player.objects.filter(team=pk)
+    return render(request, 'teams/team_summary.html', {'team': team, 'team_players':team_players})
 
 @login_required
 def add_player(request):
@@ -161,3 +162,21 @@ def add_player(request):
             return render(request, 'teams/all_teams.html', {'form': form})
 
     return render(request, 'teams/add_player.html', {'form': form})
+
+@login_required
+def edit_player(request, pk):
+    player = get_object_or_404(Player, pk=pk)
+    if request.method == "POST":
+        form = PlayerForm(request.POST, instance=player)
+        if form.is_valid():
+            player = form.save(commit=False)
+            player.save()
+            return redirect('player_summary', pk=player.pk)
+    else:
+        form = PlayerForm(instance=player)
+    return render(request, 'teams/add_player.html', {'form': form})
+
+
+def player_summary(request, pk):
+    player = get_object_or_404(Player, pk=pk)
+    return render(request, 'teams/player_summary.html', {'player': player})

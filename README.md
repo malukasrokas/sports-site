@@ -29,7 +29,7 @@ Iterations:
 * Comment in forum and news feed; *(Completed)*
 * Delete comment; *(Completed)*
 * Submit match details (for superuser); *(In progress)*
-* Submit player details (for superuser); *(In progress)*
+* Submit player details (for superuser); *(Completed)*
 
 ### 4. Fourth Iteration *(May 3)*:
 * Submit score (for superuser);

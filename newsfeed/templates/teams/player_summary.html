@@ -1,0 +1,8 @@
+{% extends 'teams/team_summary.html' %}
+
+{% block content %}
+    <p> Player from {{ player.team}} </p> <br>
+    <b>Name:</b> {{ player.name }} <br>
+    <b>Height:</b> {{ player.height }} <br>
+    <b>Birth day:</b> {{ player.bDay|date:"M d, Y" }} <br>
+{% endblock %}

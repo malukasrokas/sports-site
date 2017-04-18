@@ -20,4 +20,7 @@ urlpatterns = [
     url(r'^teams/new/$', views.add_team, name='add_team'),
     url(r'^teams/summary/(?P<pk>\d+)/$', views.team_summary, name="team_summary"),
     url(r'^teams/add_player/$', views.add_player, name='add_player'),
+    url(r'^teams/edit_player/(?P<pk>\d+)/$', views.edit_player, name='edit_player'),
+    url(r'^teams/player/summary/(?P<pk>\d+)/$', views.player_summary, name="player_summary"),
+
 ]
