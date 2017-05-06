@@ -32,7 +32,7 @@ Iterations:
 * Submit player details (for superuser); *(Completed)*
 
 ### 4. Fourth Iteration *(May 3)*:
-* Submit score (for superuser);
-* Sort out news by team;
-* Chat (read, send);
-* CRUD player statistics(for superuser);
+* Submit score (for superuser); *(Completed)*
+* Sort out news by team; *(In progress)*
+* Chat (read, send); *(In progress)*
+* CRUD player statistics(for superuser); *(Completed)*
