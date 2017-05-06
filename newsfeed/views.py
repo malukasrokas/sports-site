@@ -1,13 +1,21 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
 from .models import Post, ForumPost, Comment, Team, Player, Match
 from .forms import PostForm, ForumPostForm, CommentForm, TeamForm, PlayerForm, MatchForm
 
 def post_list(request):
     posts = Post.objects.order_by('-created_date')
-    return render(request, 'newsfeed/post_list.html', {'posts': posts})
+    paginated_posts = Paginator(posts, 2)
+    page = request.GET.get('page')
+    try:
+        post_page = paginated_posts.page(page)
+    except PageNotAnInteger:
+        post_page = paginated_posts.page(1)
+    except EmptyPage:
+        post_page = paginated_posts.page(paginated_posts.num_pages)
+    return render(request, 'newsfeed/post_list.html', {'posts': posts, 'post_page': post_page})
 
 def post_in_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -47,7 +55,19 @@ def post_remove(request, pk):
 
 def forum_list(request):
     forumPosts = ForumPost.objects.order_by('-timeStamp')
-    return render(request, 'forum/forum_list.html', {'forumPosts': forumPosts})
+    paginated_posts = Paginator(forumPosts, 2)
+    page = request.GET.get('page')
+    try:
+        post_page = paginated_posts.page(page)
+    except PageNotAnInteger:
+        post_page = paginated_posts.page(1)
+    except EmptyPage:
+        post_page = paginated_posts.page(paginated_posts.num_pages)
+
+    return render(request, 'forum/forum_list.html', {
+        'forumPosts': forumPosts,
+        'post_page': post_page
+    })
 
 def forumpost_detail(request, pk):
     forumpost = get_object_or_404(ForumPost, pk=pk)
@@ -148,7 +168,10 @@ def add_team(request):
 def team_summary(request, pk):
     team = get_object_or_404(Team, pk=pk)
     team_players = Player.objects.filter(team=pk)
-    return render(request, 'teams/team_summary.html', {'team': team, 'team_players':team_players})
+    return render(request, 'teams/team_summary.html', {
+        'team': team,
+        'team_players':team_players
+    })
 
 @login_required
 def add_player(request):
@@ -193,7 +216,7 @@ def add_match(request):
             match.save()
             return render(request, 'matches/matches_list.html', {'form': form})
 
-    return render(request, 'matches/matches_list.html', {'form': form})
+    return render(request, 'matches/add_match.html', {'form': form})
 
 def match_summary(request, pk):
     match = get_object_or_404(Match, pk=pk)
