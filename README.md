@@ -33,6 +33,6 @@ Iterations:
 
 ### 4. Fourth Iteration *(May 3)*:
 * Submit score (for superuser); *(Completed)*
-* Sort out news by team; *(In progress)*
+* Sort out news by team; *(Completed)*
 * Chat (read, send); *(In progress)*
 * CRUD player statistics(for superuser); *(Completed)*

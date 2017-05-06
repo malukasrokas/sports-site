@@ -7,11 +7,21 @@
         </form>
 
         <form action="{% url 'remove_forumpost' pk=forumpost.pk %}">
-            <input type="submit" value="Remove this post" />
+            <input onclick="myFunction()" type="submit" value="Remove this post" />
         </form>
 
     {% endif %}
+    <script>
+    function myFunction() {
 
+         var r = confirm("Are you sure?");
+         if (r == true) {
+            return true;
+         } else {
+             return false;
+         }
+    }
+    </script>
     <div>
         <p><i>Created: {{ forumpost.timeStamp }}</p></i>
         <h2>Author: {{ forumpost.author }} </h2>

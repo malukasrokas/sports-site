@@ -1,0 +1,18 @@
+{% extends 'newsfeed/base.html' %}
+
+{% block content %}
+    <p>News filtered by team: <strong>{{ team.name }}</strong> </p>
+    {% for post in team_posts %}
+        <div>
+            <h1><a href="{% url 'post_in_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+            <i><p>{{ post.team.name }}</p></i>
+            <p><i>Published: {{ post.created_date }}</i></p>
+            <p>{{ post.text|linebreaksbr }}</p>
+            <a href="{% url 'post_in_detail' pk=post.pk %}">Comments: {{ post.news_comments.count }}</a>
+        </div>
+    {% endfor %}
+    <hr>
+
+    {% include 'paginate.html' %}
+    
+{% endblock %}

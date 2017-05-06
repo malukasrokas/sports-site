@@ -7,6 +7,7 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
+    team = models.ForeignKey('Team', related_name="related_posts", null=True, blank=True)
 
     class Meta:
         ordering = ['-created_date',]

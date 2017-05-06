@@ -8,19 +8,7 @@
         <a href="{% url 'forumpost_detail' pk=forumPost.pk %}">{{ forumPost.forum_comments.count }} responses</a>
     {% endfor %}
     <hr>
-    <div>
-        <span>
-            <span>
-                Page {{ post_page.number }} of {{ post_page.paginator.num_pages }}
-            </span><br>
 
-            {% if post_page.has_previous %}
-                <a href="?page={{ post_page.previous_page_number }}">Go to previous page</a>
-            {% endif %}
-
-            {% if post_page.has_next %}
-                <a href="?page={{ post_page.next_page_number }}">Go to next page</a>
-            {% endif %}
-        </span>
-    </div>
+    {% include 'paginate.html' %}
+    
 {% endblock %}

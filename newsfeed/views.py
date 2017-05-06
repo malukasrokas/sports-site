@@ -7,6 +7,7 @@ from .forms import PostForm, ForumPostForm, CommentForm, TeamForm, PlayerForm, M
 
 def post_list(request):
     posts = Post.objects.order_by('-created_date')
+    teams = Team.objects.all()
     paginated_posts = Paginator(posts, 2)
     page = request.GET.get('page')
     try:
@@ -15,7 +16,28 @@ def post_list(request):
         post_page = paginated_posts.page(1)
     except EmptyPage:
         post_page = paginated_posts.page(paginated_posts.num_pages)
-    return render(request, 'newsfeed/post_list.html', {'posts': posts, 'post_page': post_page})
+    return render(request, 'newsfeed/post_list.html', {
+        'posts': posts,
+        'post_page': post_page,
+        'teams': teams
+    })
+
+def post_list_filtered(request, pk):
+    team = get_object_or_404(Team, pk=pk)
+    team_posts = Post.objects.filter(team=team)
+    paginated_posts = Paginator(team_posts, 2)
+    page = request.GET.get('page')
+    try:
+        post_page = paginated_posts.page(page)
+    except PageNotAnInteger:
+        post_page = paginated_posts.page(1)
+    except EmptyPage:
+        post_page = paginated_posts.page(paginated_posts.num_pages)
+    return render(request, 'newsfeed/post_list_filtered.html', {
+        'team': team,
+        'team_posts': team_posts,
+        'post_page': post_page
+    })
 
 def post_in_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
