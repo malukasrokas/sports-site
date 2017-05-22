@@ -45,15 +45,17 @@
     <div class="dropdown">
         <button onclick="myFunction()" class="dropbtn">Filter by</button>
         <div id="myDropdown" class="dropdown-content">
+            <a href="/">All</a>
             {% for team in teams %}
                 <a href="{% url 'post_list_filtered' pk=team.pk %}">{{ team.name }}</a>
             {% endfor %}
         </div>
     </div>
+
     {% for post in post_page %}
         <div>
             <h1><a href="{% url 'post_in_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-            <i><p>{{ post.team.name }}</p></i>
+            <i><p>Team: {{ post.team.name }}</p></i>
             <p><i>Published: {{ post.created_date }}</i></p>
             <p>{{ post.text|linebreaksbr }}</p>
             <a href="{% url 'post_in_detail' pk=post.pk %}">Comments: {{ post.news_comments.count }}</a>
@@ -63,22 +65,23 @@
     {% include 'paginate.html' %}
 
 <script>
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
 
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
+    window.onclick = function(event) {
+      if (!event.target.matches('.dropbtn')) {
 
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
       }
     }
-  }
-}
 </script>
+
 {% endblock %}

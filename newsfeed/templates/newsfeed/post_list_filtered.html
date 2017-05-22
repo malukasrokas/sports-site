@@ -1,11 +1,15 @@
 {% extends 'newsfeed/base.html' %}
 
 {% block content %}
-    <p>News filtered by team: <strong>{{ team.name }}</strong> </p>
+    <p>News filtered by team: <strong>{{ team.name }}</strong>
+        <form action="{% url 'post_list' %}">
+            <input type="submit" value="Remove filter" />
+        </form>
+    </p>
     {% for post in team_posts %}
         <div>
             <h1><a href="{% url 'post_in_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-            <i><p>{{ post.team.name }}</p></i>
+            <i><p>Team: {{ post.team.name }}</p></i>
             <p><i>Published: {{ post.created_date }}</i></p>
             <p>{{ post.text|linebreaksbr }}</p>
             <a href="{% url 'post_in_detail' pk=post.pk %}">Comments: {{ post.news_comments.count }}</a>
@@ -14,5 +18,5 @@
     <hr>
 
     {% include 'paginate.html' %}
-    
+
 {% endblock %}
