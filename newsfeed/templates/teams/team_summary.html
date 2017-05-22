@@ -9,7 +9,7 @@
     <br>
     <b> Team roster: </b>
     {% for player in team_players %}
-    <div>
+    <div class="player-container">
         <span>
             <a href="{% url 'player_summary' pk=player.pk %}">{{ player.name }}</a>
             {{ player.height }} cm.

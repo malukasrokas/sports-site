@@ -6,9 +6,11 @@
             <input type="submit" value="Edit summary" />
         </form>
     {% endif %}
-    <p> Venue: <b>{{ match.homeTeam.homeArena }} </b> </p>
-    <p> Date: <b> {{ match.date|date:"M d, Y" }} </b></p>
-    <p> Result: <br>
-    <b>{{ match.homeTeam }}</b> : {{ match.homeTeamScore }} <br>
-    <b>{{ match.awayTeam }}</b> : {{ match.awayTeamScore }}
+    <div class="match-summary">
+        <p> Venue: <b>{{ match.homeTeam.homeArena }} </b> </p>
+        <p> Date: <b> {{ match.date|date:"M d, Y" }} </b></p>
+        <p> Result: <br>
+        <b>{{ match.homeTeam }}</b> : {{ match.homeTeamScore }} <br>
+        <b>{{ match.awayTeam }}</b> : {{ match.awayTeamScore }}
+    </div>
 {% endblock %}

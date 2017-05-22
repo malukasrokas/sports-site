@@ -39,8 +39,8 @@
     {% endif %}
     <strong><p>Comments:</p></strong>
     {% for comment in post.news_comments.all %}
-        <div>
-            <strong>{{ comment.author }} says:</strong>
+        <div class="comment">
+            <span class="author" style="font-size: 15px;color:black;"><strong>{{ comment.author }} says:</strong></span>
             {% if user.is_superuser %}
                 <a href="{% url 'remove_news_comment' pk=comment.pk %}">Remove</a>
             {% endif %}

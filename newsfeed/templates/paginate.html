@@ -1,15 +1,23 @@
-<div>
-    <span>
-        <span>
-            Page {{ post_page.number }} of {{ post_page.paginator.num_pages }}
-        </span><br>
+<style>
+    .pagination {
+        border: 1px solid #cdf4e1;
+    }
+</style>
 
-        {% if post_page.has_previous %}
-            <a href="?page={{ post_page.previous_page_number }}">Go to previous page</a>
-        {% endif %}
+<center>
+    <div class="pagination">
 
-        {% if post_page.has_next %}
-            <a href="?page={{ post_page.next_page_number }}">Go to next page</a>
-        {% endif %}
-    </span>
-</div>
+            <span>
+                Page {{ post_page.number }} of {{ post_page.paginator.num_pages }}
+            </span><br>
+
+            {% if post_page.has_previous %}
+                <a href="?page={{ post_page.previous_page_number }}">Go to previous page</a>
+            {% endif %}
+
+            {% if post_page.has_next %}
+                <a href="?page={{ post_page.next_page_number }}">Go to next page</a>
+            {% endif %}
+
+    </div>
+</center>

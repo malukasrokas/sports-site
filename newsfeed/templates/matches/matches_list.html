@@ -9,10 +9,12 @@
     <br>
 
     {% for match in matches %}
+    <div class="match">
         <i> {{ match.date|date:"M d, Y" }} </i><br>
         <b>{{ match.awayTeam }} </b> ({{ match.awayTeamScore }}) @
         <b>{{ match.homeTeam }}</b> ({{ match.homeTeamScore }}) in
         {{ match.homeTeam.homeArena }}
         <a href="{% url 'match_summary' pk=match.pk %}">Summary</a><br>
+    </div>
     {% endfor %}
 {% endblock %}

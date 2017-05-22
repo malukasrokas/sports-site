@@ -41,16 +41,17 @@
 
     .show {display:block;}
 </style>
-
-    <div class="dropdown">
-        <button onclick="myFunction()" class="dropbtn">Filter by</button>
-        <div id="myDropdown" class="dropdown-content">
-            <a href="/">All</a>
-            {% for team in teams %}
-                <a href="{% url 'post_list_filtered' pk=team.pk %}">{{ team.name }}</a>
-            {% endfor %}
+    <center>
+        <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">Filter by</button>
+            <div id="myDropdown" class="dropdown-content">
+                <a href="/">All</a>
+                {% for team in teams %}
+                    <a href="{% url 'post_list_filtered' pk=team.pk %}">{{ team.name }}</a>
+                {% endfor %}
+            </div>
         </div>
-    </div>
+    </center>
 
     {% for post in post_page %}
         <div>

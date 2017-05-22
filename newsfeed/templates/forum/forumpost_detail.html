@@ -24,19 +24,20 @@
     </script>
     <div>
         <p><i>Created: {{ forumpost.timeStamp }}</p></i>
-        <h2>Author: {{ forumpost.author }} </h2>
+        <div class="author-container"><h2>Author: {{ forumpost.author }} </h2></div>
         <h1>{{ forumpost.title }}</h1>
-        <p> {{ forumpost.post }}</p>
+        <p class="post-content"> {{ forumpost.post }}</p>
     </div>
+
+    <center><div style="width:100%; background-color: #b1e89a"><span style="font-size: 20px;"> Comments: </span></div></center>
     {% if user.is_authenticated %}
         <form action="{% url 'add_comment_to_forumpost' pk=forumpost.pk %}">
             <input type="submit" value="Add comment" />
         </form>
     {% endif %}
-    <p> Comments: </p>
     {% for comment in forumpost.forum_comments.all %}
-        <div>
-            <strong> {{ comment.author }} </strong>
+        <div class="comment">
+            <span class="comment-author"><strong> {{ comment.author }} </strong> says:</span>
             {% if user.is_superuser %}
                 <a href="{% url 'remove_forum_comment' pk=comment.pk %}">Remove</a>
             {% endif %}

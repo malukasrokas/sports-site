@@ -7,8 +7,8 @@
         </form>
     {% endif %}
     {% for team in teams %}
-        <div>
-            <p><a href="{% url 'team_summary' pk=team.pk %}"> {{ team.name|linebreaksbr }} </a></p>
+        <div class="team-container">
+            <span class="team"><a href="{% url 'team_summary' pk=team.pk %}"> {{ team.name|linebreaksbr }} </a></span>
         </div>
     {% endfor %}
 {% endblock %}

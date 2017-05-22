@@ -1,14 +1,25 @@
 {% extends 'forum/base.html' %}
+
 {% block content %}
 
     {% for forumPost in post_page %}
-        <p>{{ forumPost.timeStamp }}
-        <h2><a href="{% url 'forumpost_detail' pk=forumPost.pk %}">{{ forumPost.title }}</a><i> by {{ forumPost.author }}</i></h2>
+    <div class="forumpost">
+        <span class="date">{{ forumPost.timeStamp }}</span>
+        <h2><a href="{% url 'forumpost_detail' pk=forumPost.pk %}">{{ forumPost.title }}</a><span class="author"> by {{ forumPost.author }}</span></h2>
         <p>{{ forumPost.post|truncatechars:100|linebreaksbr }}</p>
-        <a href="{% url 'forumpost_detail' pk=forumPost.pk %}">{{ forumPost.forum_comments.count }} responses</a>
+        <div class="comment"><span class="comment-content"><a href="{% url 'forumpost_detail' pk=forumPost.pk %}">{{ forumPost.forum_comments.count }} responses</a></span></div>
+    </div>
     {% endfor %}
     <hr>
 
     {% include 'paginate.html' %}
     
 {% endblock %}
+
+<style>
+    .forumpost {
+        width: 100%;
+        height: 60px;
+        background-color: green;
+    }
+</style>
