@@ -27,5 +27,4 @@ urlpatterns = [
     url(r'^matches/add_match/$', views.add_match, name='add_match'),
     url(r'^match/summary/(?P<pk>\d+)/$', views.match_summary, name="match_summary"),
     url(r'^match/summary/edit/(?P<pk>\d+)/$', views.edit_match_summary, name='edit_match_summary'),
-
 ]

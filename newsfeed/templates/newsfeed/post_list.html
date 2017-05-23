@@ -54,15 +54,16 @@
     </center>
 
     {% for post in post_page %}
-        <div>
+        <div style="margin: 70px; border: 1px solid #cdcdcd; border-radius:10px;">
             <h1><a href="{% url 'post_in_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-            <i><p>Team: {{ post.team.name }}</p></i>
-            <p><i>Published: {{ post.created_date }}</i></p>
-            <p>{{ post.text|linebreaksbr }}</p>
-            <a href="{% url 'post_in_detail' pk=post.pk %}">Comments: {{ post.news_comments.count }}</a>
+            <i><p style="margin-left: 10px;">Team: {{ post.team.name }}</p></i>
+            <p style="margin-left: 10px;" ><i>Published: {{ post.created_date }}</i></p>
+            <br>
+            <p style="margin-left: 10px;">{{ post.text|linebreaksbr }}</p>
+            <a  style="margin-left:10px;" href="{% url 'post_in_detail' pk=post.pk %}">Comments: {{ post.news_comments.count }}</a>
         </div>
+        <hr>
     {% endfor %}
-    <hr>
     {% include 'paginate.html' %}
 
 <script>

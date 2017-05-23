@@ -1,8 +1,15 @@
 {% extends 'teams/team_summary.html' %}
 
 {% block content %}
-    <p> Player from {{ player.team}} </p> <br>
+<div style="width:100%; height:40px;">
+    <form action="{% url 'edit_player' pk=player.pk %}">
+        <input type="submit" value="Edit player summary" style="width:400px; margin-left: 50px; float:left; " />
+    </form>
+</div>
+<div class="player-summary">
+    <p> Player from <strong>{{ player.team}}</strong> </p> <br>
     <b>Name:</b> {{ player.name }} <br>
     <b>Height:</b> {{ player.height }} <br>
     <b>Birth day:</b> {{ player.bDay|date:"M d, Y" }} <br>
+</div>
 {% endblock %}
