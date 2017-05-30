@@ -7,7 +7,7 @@
     </form>
 </div>
 <div class="player-summary">
-    <p> Player from <strong>{{ player.team}}</strong> </p> <br>
+    <p> Player from <a href="{% url 'team_summary' pk=player.team.pk %}"><strong>{{ player.team}}</strong> </p> <br></a>
     <b>Name:</b> {{ player.name }} <br>
     <b>Height:</b> {{ player.height }} <br>
     <b>Birth day:</b> {{ player.bDay|date:"M d, Y" }} <br>

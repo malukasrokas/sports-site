@@ -203,7 +203,7 @@ def add_player(request):
         if form.is_valid():
             player = form.save(commit=False)
             player.save()
-            return render(request, 'teams/all_teams.html', {'form': form})
+            return redirect('player_summary', pk=player.pk)
 
     return render(request, 'teams/add_player.html', {'form': form})
 
