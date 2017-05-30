@@ -1,5 +1,5 @@
-from django import forms
 
+from django import forms
 from .models import Post, ForumPost, Comment, Team, Player, Match
 
 class PostForm(forms.ModelForm):
@@ -31,7 +31,7 @@ class PlayerForm(forms.ModelForm):
     class Meta:
         model = Player
         fields = ('name', 'height', 'bDay', 'team')
-
+        
 class MatchForm(forms.ModelForm):
 
     class Meta:
